@@ -5,14 +5,23 @@ public class Mov : MonoBehaviour
     public Rigidbody rb;
     private float vel = 5f;
 
+    private Vector3 direction;
     // Update is called once per frame
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
+    void Update()
+    {
+        Mover();       
+    }
     void FixedUpdate()
     {
-        Vector3 direction = Vector3.zero;
+        rb.linearVelocity = new Vector3(direction.x * vel, direction.y , direction.z * vel);
+    }
+    void Mover()
+    {
+        direction = Vector3.zero;
 
         if (Keyboard.current[Key.W].isPressed)
         {
@@ -31,10 +40,7 @@ public class Mov : MonoBehaviour
             direction += Vector3.back;
         }
 
-        direction = Vector3.ClampMagnitude(direction, 1f);
-
-        rb.linearVelocity = new Vector3(direction.x * vel, direction.y , direction.z * vel);
-        
+        direction = Vector3.ClampMagnitude(direction, 1f);  
     }
 
 }
