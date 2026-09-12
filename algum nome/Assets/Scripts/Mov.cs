@@ -21,6 +21,8 @@ public class Mov : MonoBehaviour
     }
     void Mover()
     {
+        transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
+
         direction = Vector3.zero;
 
         if (Keyboard.current[Key.W].isPressed)
@@ -29,7 +31,7 @@ public class Mov : MonoBehaviour
         }
         else if (Keyboard.current[Key.A].isPressed)
         {
-            direction += Vector3.left;
+            direction -= transform.right;
         }
         else if (Keyboard.current[Key.D].isPressed)
         {
@@ -37,7 +39,7 @@ public class Mov : MonoBehaviour
         }
         else if (Keyboard.current[Key.S].isPressed)
         {
-            direction += Vector3.back;
+            direction -= transform.forward;
         }
 
         direction = Vector3.ClampMagnitude(direction, 1f);  
