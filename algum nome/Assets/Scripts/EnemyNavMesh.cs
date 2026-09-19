@@ -8,6 +8,10 @@ public class EnemyNavMesh : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MoverInimigo();
+    }
+    void MoverInimigo()
+    {
         if(player != null)
         {
             agent.SetDestination(player.position);
