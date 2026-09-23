@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class ShootPool : MonoBehaviour
 {
@@ -31,16 +32,18 @@ public class ShootPool : MonoBehaviour
         {
             Shoot();
         }
+        if (Keyboard.current[Key.R].wasPressedThisFrame)
+        {
+            currentAmmo = poolSize;
+        }
     }
     void Shoot()
     {
         if (currentAmmo <= 0 || activeProjectiles >= poolSize)
                 return;
             GameObject projectile = pool.Get();
-
             currentAmmo--;
             activeProjectiles++;
-
             projectile.transform.SetPositionAndRotation(firePoint.position, firePoint.rotation);
             projectile.GetComponent<Projectile>().StartProjectile(firePoint.forward, this);  
     }
