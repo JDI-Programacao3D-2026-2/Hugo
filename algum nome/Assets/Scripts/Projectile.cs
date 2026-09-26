@@ -7,6 +7,10 @@ public class Projectile : MonoBehaviour
     private Vector3 direction;
     private ShootPool ShootPool;
 
+    void Awake()
+    {
+        Invoke("SpawnTime",5f);
+    }
     public void StartProjectile(Vector3 direction, ShootPool shooter)
     {
         this.direction = direction;
@@ -18,6 +22,10 @@ public class Projectile : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision)
+    {
+        ShootPool.ReturnProjectile(gameObject);
+    }
+    void SpawnTime()
     {
         ShootPool.ReturnProjectile(gameObject);
     }
