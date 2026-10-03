@@ -5,13 +5,45 @@ public class EnemyNavMesh : MonoBehaviour
     public Transform player;
     public NavMeshAgent agent;
     public Transform[] waypoints;
+    public LayerMask layerMask;
 
     // Update is called once per frame
+
+    public enum EnemyState
+    {
+        WayPatrol,RandomPatrol, Pursuit
+    }
+    public EnemyState currentState = EnemyState.WayPatrol;
+
     void Update()
     {
-        //Pursuit();
-        WayPatrol();
-        //RandomPatrol();
+        FiniteStateMachine();
+    }
+    public void ChangeState(EnemyState newState)
+    {
+        currentState = newState;
+    }
+    void FiniteStateMachine()
+    {
+        switch (currentState)
+        {
+            case EnemyState.Pursuit:
+                Pursuit();
+                break;
+            case EnemyState.WayPatrol:
+                WayPatrol();
+                break;
+            default:
+                break;
+        }
+        if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 20f, layerMask))
+        {
+            ChangeState(EnemyState.Pursuit);
+        }
+        else
+        {
+            ChangeState(EnemyState.WayPatrol);
+        }
     }
     void Pursuit()
     {
