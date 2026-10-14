@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 83997421}
   - component: {fileID: 83997420}
   - component: {fileID: 83997422}
+  - component: {fileID: 83997423}
   m_Layer: 3
   m_Name: yve(inimigo)
   m_TagString: Untagged
@@ -394,6 +395,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   player: {fileID: 802322878}
+--- !u!114 &83997423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83997414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c10c98dc6dac8e4fbbb518253be5e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 100
+  currentHealth: 0
 --- !u!1 &171077127
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +507,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 255
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
