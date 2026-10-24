@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour
     public bool StopCountDown;
 
     //tab
-
     public GameObject tabPanel;
     public int FragScore = 0;
     public int DeathScore;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public TextMeshProUGUI fragText;
+    public TextMeshProUGUI deathText;
+    public TextMeshProUGUI playerNameText;
+
     void Start()
     {
         StopCountDown = false;
@@ -23,7 +25,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ScorePanel();
+        ScorePanel();
         StartCountDown();
     }
     void StartCountDown()
@@ -44,5 +46,26 @@ public class GameManager : MonoBehaviour
         gameStartText.text = "";
         StopCountDown = true;
         startTime = 5;
+    }
+    void ScorePanel()
+    {
+        if(Keyboard.current[Key.Tab].wasPressedThisFrame)
+        {
+            tabPanel.SetActive(!tabPanel.activeSelf);
+        }
+    }
+    public void UpdateFragScore(int frag)
+    {
+        FragScore += frag;
+        fragText.text = FragScore.ToString();
+    }
+    public void UpdateDeathScore(int death)
+    {
+        DeathScore += death;
+        deathText.text = DeathScore.ToString();
+    }
+    public void PlayerLists(string playerName)
+    {
+        playerNameText.text = playerName;
     }
 }
