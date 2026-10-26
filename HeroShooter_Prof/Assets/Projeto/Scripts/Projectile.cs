@@ -27,6 +27,10 @@ public class Projectile : MonoBehaviour
         if (enemy != null) {
             enemy.TakeDamage(damage);
         }
+        PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
+        if (player != null) {
+            player.TakeDamage(damage);
+        }
         CancelInvoke("SpawnTime");
         Shootpool.ReturnProjectile(gameObject);
     }

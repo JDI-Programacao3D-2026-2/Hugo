@@ -6,7 +6,7 @@ public class ShootPool : MonoBehaviour
 {
     public GameObject projectilePrefab; 
     public Transform firePoint; 
-    public int poolSize = 20; 
+    public int poolSize = 30; 
     public int currentAmmo; 
     private int activeProjectiles = 0;
     private ObjectPool<GameObject> pool; 
@@ -20,6 +20,19 @@ public class ShootPool : MonoBehaviour
 
     void Awake()
     {
+        if(!isEnemy)
+        {
+            switch(GameManager.ChoosenCharacterIndex)
+            {
+                case 0:
+                    poolSize = 30;
+                    break;
+                case 1:
+                    poolSize = 7;
+                    break;
+            }
+        }
+        
         currentAmmo = poolSize;
         pool = new ObjectPool<GameObject>(
             () => Instantiate(projectilePrefab), 
@@ -34,6 +47,7 @@ public class ShootPool : MonoBehaviour
 
     void Update()
     {   
+        player = GameManager.ActiveChar;
         if(isEnemy && canShoot && Time.time >= nextFireTime)
         {           
             Shoot();
@@ -53,6 +67,11 @@ public class ShootPool : MonoBehaviour
         {
             Invoke("Reload", 2f);
         }
+        if(currentAmmo <= 0 && !isEnemy && !IsInvoking("Reload"))
+        {
+            Invoke("Reload", 2f);
+        }
+        
     }
 void FixedUpdate()
 {

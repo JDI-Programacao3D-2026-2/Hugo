@@ -16,6 +16,7 @@ public class EnemyNavMesh : MonoBehaviour
     public EnemyState currentState = EnemyState.WayPatrol;
 
     void Update(){
+    player = GameManager.ActiveChar;
     FiniteStateMachine();
     }
     public void ChangeState(EnemyState newState){

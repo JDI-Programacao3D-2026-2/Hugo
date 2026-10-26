@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI fragText;
     public TextMeshProUGUI deathText;
     public TextMeshProUGUI playerNameText;
-
+    public static int ChoosenCharacterIndex = 0;
+    public static Transform ActiveChar;
     void Start()
     {
         StopCountDown = false;
@@ -68,4 +69,5 @@ public class GameManager : MonoBehaviour
     {
         playerNameText.text = playerName;
     }
+
 }
