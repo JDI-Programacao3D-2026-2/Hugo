@@ -2,11 +2,28 @@ using UnityEngine; // Importa as funções da Unity.
 
 public class Projectile : MonoBehaviour
 {
-    public float speed = 10f; 
-    public float damage = 25f;
-    private Vector3 direction; 
-    private ShootPool Shootpool; 
+    private float speed = 100f; 
+    private float damageToPlayer = 23f;
+    private float damageNoob = 21;
+    private float damageVigi = 34;
 
+    private float damage;
+    private Vector3 direction; 
+    private ShootPool Shootpool;
+
+    void Awake()
+    {
+        switch (GameManager.ChoosenCharacterIndex)
+        {
+            case 0:
+                damage = damageNoob;
+                break;
+            case 1:
+                damage = damageVigi; 
+                break;
+        }
+
+    }
     void OnEnable()
     {
         Invoke("SpawnTime", 5f); 
@@ -29,7 +46,7 @@ public class Projectile : MonoBehaviour
         }
         PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
         if (player != null) {
-            player.TakeDamage(damage);
+            player.TakeDamage(damageToPlayer);
         }
         CancelInvoke("SpawnTime");
         Shootpool.ReturnProjectile(gameObject);

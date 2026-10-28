@@ -23,7 +23,7 @@ public class Description : MonoBehaviour
         GameManager.ChoosenCharacterIndex = 1;
         descriptionText.text = "Vigilante: \n - Base Health: 120 \n - Press Left Mouse Button: Fire your pistol at enemies dealing 25 damage per shot"+
                                 "\n -Press 1: Throw a camera attaching on structures, Press 1 to watch camera \n"+ 
-                                "Press 2 : Turn invisible for 5 seconds, Shooting Disable invisibility, 20 seconds cooldown";
+                                "Press 2 : Reveal Enemies Position on minimap, 30 seconds cooldown";
     }
     public void SwordProDescription()
     {

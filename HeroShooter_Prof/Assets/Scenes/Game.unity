@@ -144,7 +144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &16995077
 Transform:
   m_ObjectHideFlags: 0
@@ -209,7 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500a4ad0ada1945568d1be3a73c5f4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Skills
-  cd_1: 0
   skill_Image:
   - {fileID: 1706162806}
 --- !u!114 &16995081
@@ -1536,7 +1535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &243100433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1716,7 +1715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500a4ad0ada1945568d1be3a73c5f4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Skills
-  cd_1: 0
   skill_Image:
   - {fileID: 563017131}
 --- !u!114 &243100441
@@ -2933,7 +2931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &465617803
 Transform:
   m_ObjectHideFlags: 0
@@ -2997,7 +2995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500a4ad0ada1945568d1be3a73c5f4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Skills
-  cd_1: 0
   skill_Image:
   - {fileID: 411630804}
 --- !u!114 &465617808
@@ -5984,7 +5981,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: a
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8455,7 +8452,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: a
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9353,8 +9350,8 @@ SceneRoots:
   - {fileID: 497752777}
   - {fileID: 330585546}
   - {fileID: 243100437}
-  - {fileID: 465617803}
   - {fileID: 16995077}
+  - {fileID: 465617803}
   - {fileID: 4315607463466884258}
   - {fileID: 793621159}
   - {fileID: 309636905}

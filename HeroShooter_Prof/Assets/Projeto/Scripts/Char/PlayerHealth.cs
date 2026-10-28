@@ -6,20 +6,26 @@ public class PlayerHealth : MonoBehaviour
 {
     private float maxHealth;
     private float currentHealth;
+    private float shield = 50;
     public Image healthBar;
+    
     void Start()
     {
-        Debug.Log("Max Health: " + maxHealth);
+        UpdateHealthBar();
     }
     public void Health(float amount)
     {
         maxHealth = amount;
         currentHealth = maxHealth;
     }
+    void UpdateHealthBar()
+    {
+        healthBar.fillAmount = currentHealth / maxHealth;
+    }
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        healthBar.fillAmount = currentHealth / maxHealth;
+        UpdateHealthBar();
         if(currentHealth <= 0)
         {
             Die();
@@ -28,6 +34,16 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         gameObject.SetActive(false);
+        
+    }
+    public void RestoreHealth(float restore)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + restore,0f, maxHealth);
+        UpdateHealthBar();
+        Debug.Log(currentHealth);
+    }
+    public void AddShield(float shieldValue)
+    {
         
     }
 }
