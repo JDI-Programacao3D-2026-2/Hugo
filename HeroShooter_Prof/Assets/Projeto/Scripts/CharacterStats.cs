@@ -1,0 +1,51 @@
+using UnityEngine;
+
+public class CharacterStats : MonoBehaviour
+{
+    public string characterName;
+    public TeamType team = TeamType.Enemy;
+    public int kills = 0;
+    public int deaths = 0;
+    public GameManager gameManager;
+    private PlayerHealth playerHealth;
+
+    void Awake()
+    {
+        playerHealth = GetComponent<PlayerHealth>();
+    }
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        AddPlayerName();
+    }
+    public void AddKill()
+    {
+        kills++;
+        playerHealth.RestoreHealth(50f);
+        if(team == TeamType.Player)
+        {
+            gameManager.UpdateFragScore(1);
+        }
+    }
+    public void AddDeath()
+    {
+        deaths++;
+        if(team == TeamType.Player)
+        {
+            gameManager.UpdateDeathScore(1);
+        }
+    }
+    public void AddPlayerName()
+    {
+        if (team == TeamType.Player)
+        {
+            gameManager.PlayerLists(characterName);
+        }
+    }
+    public enum TeamType
+    {
+        Player,
+        Ally,
+        Enemy
+    }
+}

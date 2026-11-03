@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    public TextMeshProUGUI gameStartText;
     public float startTime = 5f;
     public bool StopCountDown;
 
@@ -15,20 +14,28 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI fragText;
     public TextMeshProUGUI deathText;
     public TextMeshProUGUI playerNameText;
-    public static int ChoosenCharacterIndex = 0;
+    public static int ChoosenCharacterIndex = 0;// 0 = Noob, 1 = Vigilante, 2 = swordMaster
+    public static CharacterStats ActiveStats;
     public static Transform ActiveChar;
+
+    public static ScoreUI ActiveScoreUI;
+    public static PointUI ActiveZoneUI;
+    
+    /*
     void Start()
     {
         StopCountDown = false;
-        startTime = 5;
+        startTime = 2;
     }
+    */
 
     // Update is called once per frame
     void Update()
     {
         ScorePanel();
-        StartCountDown();
+        //StartCountDown();
     }
+    /*
     void StartCountDown()
     {
         if(startTime > 0 && !StopCountDown)
@@ -48,26 +55,41 @@ public class GameManager : MonoBehaviour
         StopCountDown = true;
         startTime = 5;
     }
+    */
     void ScorePanel()
     {
-        if(Keyboard.current[Key.Tab].wasPressedThisFrame)
+        if (ActiveScoreUI == null) return;
+        if (Keyboard.current[Key.Tab].wasPressedThisFrame)
         {
-            tabPanel.SetActive(!tabPanel.activeSelf);
+            ActiveScoreUI.tabPanel.SetActive(!ActiveScoreUI.tabPanel.activeSelf);
+        }
+        if(Keyboard.current[Key.Tab].wasReleasedThisFrame)
+        {
+            ActiveScoreUI.tabPanel.SetActive(false);
         }
     }
     public void UpdateFragScore(int frag)
     {
         FragScore += frag;
-        fragText.text = FragScore.ToString();
+        if (ActiveScoreUI != null)
+        {
+            ActiveScoreUI.fragText.text = FragScore.ToString();
+        }
     }
     public void UpdateDeathScore(int death)
     {
         DeathScore += death;
-        deathText.text = DeathScore.ToString();
+        if (ActiveScoreUI != null)
+        {
+            ActiveScoreUI.deathText.text = DeathScore.ToString();
+        }
     }
     public void PlayerLists(string playerName)
     {
-        playerNameText.text = playerName;
+        if (ActiveScoreUI != null)
+        {
+            ActiveScoreUI.playerNameText.text = playerName;
+        }
     }
 
 }

@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class ChangeScene : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
     public void CharSeleciton()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("CharSelection");
@@ -10,5 +14,9 @@ public class ChangeScene : MonoBehaviour
     public void StartGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+    }
+    public void Tutorial()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial");
     }
 }

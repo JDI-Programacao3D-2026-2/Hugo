@@ -2,7 +2,7 @@ using UnityEngine; // Importa as funções da Unity.
 
 public class Projectile : MonoBehaviour
 {
-    private float speed = 100f; 
+    private float speed = 60f; 
     private float damageToPlayer = 23f;
     private float damageNoob = 21;
     private float damageVigi = 34;
