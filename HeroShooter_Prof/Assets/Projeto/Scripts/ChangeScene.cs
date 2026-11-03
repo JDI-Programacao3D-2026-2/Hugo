@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     public void Start()
@@ -9,14 +9,18 @@ public class ChangeScene : MonoBehaviour
     }
     public void CharSeleciton()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("CharSelection");
+        SceneManager.LoadScene("CharSelection");
     }
     public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Game");
     }
     public void Tutorial()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("Tutorial");
+    }
+    public void Exit()
+    {
+        Application.Quit();
     }
 }

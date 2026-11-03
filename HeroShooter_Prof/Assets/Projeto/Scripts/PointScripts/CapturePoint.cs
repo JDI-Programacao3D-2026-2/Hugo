@@ -10,6 +10,7 @@ public class CapturePoint : MonoBehaviour
     private float progress = 0f;
     private bool captured = false;
     private bool isPlayerCapturing = false;
+    private bool capturing = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -28,8 +29,11 @@ public class CapturePoint : MonoBehaviour
     {
     if (captured) return;
 
-    bool capturing = (playersInside > 0 && enemiesInside == 0) ||
-                     (enemiesInside > 0 && playersInside == 0);
+    if(playersInside > 0 && enemiesInside == 0 || enemiesInside > 0 && playersInside == 0)
+        {
+            capturing = true;
+        }
+    
 
     if (capturing)
         {
